@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="140"
+   height="30"
+   viewBox="0 0 140 30"
+   id="svg5692"
+   version="1.1"
+   inkscape:version="0.91 r"
+   sodipodi:docname="chamas-graf.svg">
+  <defs
+     id="defs5694" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.9095692"
+     inkscape:cx="100.5462"
+     inkscape:cy="20.127866"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1375"
+     inkscape:window-height="876"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     units="px"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="-45.856937,22.951841"
+       orientation="1,0"
+       id="guide6230" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5697">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1022.3622)">
+    <rect
+       style="opacity:1;fill:#cccccc;fill-opacity:0.94117647;fill-rule:evenodd;stroke:none;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect4710"
+       width="57.829292"
+       height="1.5629538"
+       x="2.3892088"
+       y="1047.3524" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path108-6-3-2-4"
+       style="fill:#cccccc;fill-opacity:0.94117647;fill-rule:nonzero;stroke:none"
+       d="m 62.295854,1036.5957 c -1.199123,0.53 -2.134228,1.6764 -2.312098,3.0063 -0.245912,1.8329 1.041349,3.3212 2.877936,3.3212 1.833002,0 3.519972,-1.4883 3.765686,-3.3212 0.09809,-0.7251 -0.04616,-1.3939 -0.36668,-1.9412 -0.910036,-1.7486 -3.060578,-2.8043 -2.380736,-5.3857 0.689787,-2.6204 4.102125,-5.0466 6.70311,-4.7013 -0.439101,0.2501 -2.127265,1.3184 -3.0757,3.4989 -1.099842,2.5304 -0.426369,3.9486 0.105449,4.4902 0.0031,0 0.0044,0 0.0073,0 0.438106,0.4619 1.064826,0.7244 1.768541,0.7244 1.272937,0 2.439829,-1.0147 2.608346,-2.2641 0.137275,-1.0213 -0.563449,-1.855 -1.57953,-1.9162 3.43502,-2.0575 7.105605,1.0189 4.72427,4.4596 -0.126146,0.1814 -0.510925,0.6763 -0.547333,0.7391 -0.192592,0.3024 -0.323707,0.6414 -0.37285,1.0007 -0.164937,1.2363 0.70133,2.239 1.938055,2.239 1.235932,0 2.371984,-1.0027 2.53712,-2.239 0.08695,-0.6495 -0.113411,-1.2332 -0.50058,-1.6423 1.933479,-0.7866 3.642931,0.8105 2.76453,2.8102 -0.947042,2.1553 -3.781607,2.5843 -4.384451,5.2284 -1.35252,-1.7275 -5.661963,-4.9264 -7.931284,-2.3825 -2.557014,2.8645 -8.12626,4.1955 -10.076851,0.8228 0.564247,2.1685 2.961101,3.0248 1.589879,5.6831 -0.237357,-2.4794 -2.989551,-3.589 -3.056401,-6.326 -0.06387,-2.6336 2.404215,-5.716 5.194211,-5.9107"
+       sodipodi:nodetypes="ccscccccccscccccsccccccccc"
+       inkscape:export-filename="/home/jcscabral/Documents/Design/Web/animacoes/fogoFim.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="opacity:1;fill:#cccccc;fill-opacity:0.94117647;fill-rule:evenodd;stroke:none;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect4710-3"
+       width="57.829292"
+       height="1.5629538"
+       x="78.523048"
+       y="1047.3738" />
+    <rect
+       style="opacity:1;fill:#cccccc;fill-opacity:0.94117647;fill-rule:evenodd;stroke:none;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect4710-7"
+       width="133.92357"
+       height="1.5629538"
+       x="2.3983607"
+       y="1048.8302" />
+  </g>
+</svg>

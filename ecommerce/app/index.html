@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>BRASA bbq</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">  
+  <meta charset="UTF-8"> 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Bitter|Oswald">  
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./styles/brasa.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="./scripts/itemslide.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.12/jquery.mousewheel.min.js"></script>
+  <script src="./scripts/sliding.js"></script>  
+  <link href="./styles/sliding.css" rel="stylesheet" /> 
+  <script src="./scripts/util.js"></script>
+  
+</head>
+
+<body>
+<header>
+
+  <nav class="navbar-container">
+    
+    <div id="navbar" class="navbar navbar-top">	
+      <div id="navbar-products">
+        <ul>
+          <li>
+			<p>Produtos <i id="arrow-nav" class="arrow-down"></i></p>
+			<p>(<span id="product-selected"></span>)</p>
+		  </li>
+        </ul>
+      </div>	  
+      <div id="navbar-logo"> 
+        <ul>
+          <li class="show-gt-small " >
+			<a href="#">
+				<img src="./images/logo-neg-small.png"></img>
+			</a>
+		  </li>
+        </ul>
+      </div>	  
+      <div >
+        <ul>
+		  <li id="navbar-menu" class="opennav hide-medium hide-large navbar-hover">
+			<a><i class="fa fa-bars"></i></a>
+		  </li>         
+          <li class="navbar-login">
+			<img src="./images/login.svg"></img>
+		  </li>         
+        </ul>
+      </div>
+    </div>
+     
+  </nav>  
+
+  <nav id="navbar-droped" class="hide nav-top" >   <!-- hide-large hide-medium -->
+    
+	<ul class="navbar-rolled">
+      <li><a class="navbar-hover navLogin" >LOGIN</a></li>
+	  <li><a class="navbar-hover navAddHome" >ADICIONAR HOMESCREEN</a></li>
+	  <li><a class=" navProducts" >PRODUTOS:</a></li>
+      <li><a class="navbar-hover navProduct back-red" >TODOS</a></li>
+      <li><a class="navbar-hover navProduct back-red" >CARNES</a></li>
+      <li><a class="navbar-hover navProduct back-red" >PESCADOS</a></li>                  
+    </ul>
+	
+  </nav>  
+
+</header> 
+
+<main>	
+	
+	<section class="cards sessionTemplate" hidden>
+      <div id="">
+		<header>                  
+          <span></span>
+          <a href="#" class="btn-plus ">ver todos</a>          
+        </header>
+		<div class="flexwrap">
+			<div class="cards-container">
+			</div>
+        </div>
+      </div>
+    </section>
+	
+	<div class="item-container itemTemplate" hidden>
+		<div class="item" id="">
+		  <div class="item-inner">
+			<div class="item-top">                      
+			  <div class="item-top-image">
+				<img src=""></img>
+			  </div>
+			  <div class="item-top-info">
+				<p class="rotulo"></p>
+				<p class="descricao"></p>
+			  </div> 
+			</div>
+			<div class="item-bottom" >                      
+			  <div class="item-bottom-l">
+				<div class="price"></div>
+			  </div>
+			  <div class="item-bottom-r">
+				<div class="cart ">
+				  <i class="fa fa-shopping-cart "></i>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>   
+	</div>
+	
+	<section id="home-container" class="home-ini">
+		<img></img> 
+		<p ></p>
+	</section>  
+	
+	<section class="cards " id="carousel">
+	  <div >
+		<header >                  
+		  <span></span>        
+		</header>
+		<div id="scrolling" class="flexwrap ">          
+		  <!-- work around arrows -->
+		  <div class="degrade-l scrolling-nav">
+			<a class="arrow-l"></a>
+		  </div>
+		  <div class="degrade-r scrolling-nav" >
+			<a class="arrow-r"></a>
+		  </div>
+		  <ul></ul>
+		</div>		
+	  </div>	  
+	</section>
+	
+	<section id="products-container"></section>
+
+  </main>
+
+  <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+    <div class="w3-row">
+      <div class="w3-third"> 
+      <p>SIGA</p>  
+        <a href="#" class="w3-hover-text-indigo"><i class="fa fa-facebook-official"></i></a>
+        <a href="#" class="w3-hover-text-pink"><i class="fa fa-instagram"></i></a>
+        <!--p class="w3-medium">Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p-->
+      </div>
+      <div class="w3-third"> 
+      <p>CONTATO</p>  
+        <p class="w3-medium">(11) 9999-9999</p>
+        <p class="w3-medium">contato@brasatruck.com.br</p>
+      </div>
+      <div class="w3-third"> 
+      <p>NEWSLATER</p>  
+        <input class="w3-input w3-border w3-medium" type="text" placeholder="Email">        
+         <div class="w3-medium"><button class="w3-btn w3-section ">ENVIAR</button></div>         
+      </div>
+    </div>
+  </footer>
+</div>
+<script src="./scripts/app.js"></script>
+<script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.18.11'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+</body> 
+</html>
