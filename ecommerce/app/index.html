@@ -8,116 +8,165 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Bitter|Oswald">  
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="./styles/brasa.css">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="./scripts/itemslide.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.12/jquery.mousewheel.min.js"></script>
-  <script src="./scripts/sliding.js"></script>  
   <link href="./styles/sliding.css" rel="stylesheet" /> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.12/jquery.mousewheel.min.js"></script>
+  <script src="./scripts/itemslide.js"></script>
+  <script src="./scripts/sliding.js"></script>  
   <script src="./scripts/util.js"></script>
+  <script src="./scripts/vue.js"></script>
   
 </head>
 
 <body>
+    
+<section class="flex-l">
+    
 <header>
 
-  <nav class="navbar-container">
+  <nav id="navbar-container">
     
-    <div id="navbar" class="navbar navbar-top">	
-      <div id="navbar-products">
+    <div id="navbar" class="navbar-top ">	
+
+      <div id="navbar-products" style="width:40%;">
         <ul>
           <li>
-			<p>Produtos <i id="arrow-nav" class="arrow-down"></i></p>
-			<p>(<span id="product-selected"></span>)</p>
-		  </li>
+            <p>Produtos <i id="arrow-nav" class="arrow-down"></i></p>
+            <p>(<span id="product-selected"></span>)</p>
+          </li>
         </ul>
-      </div>	  
+      </div>	
+
       <div id="navbar-logo"> 
-        <ul>
-          <li class="show-gt-small " >
-			<a href="#">
-				<img src="./images/logo-neg-small.png"></img>
-			</a>
-		  </li>
-        </ul>
-      </div>	  
-      <div >
-        <ul>
-		  <li id="navbar-menu" class="opennav hide-medium hide-large navbar-hover">
-			<a><i class="fa fa-bars"></i></a>
-		  </li>         
+        <!--ul>
+          <!--li class="show-gt-small " -->
+            <a href="#" class="hide">
+                <img src="./images/logo-neg-small.png" />
+            </a>
+		  <!--/li>
+        </ul-->
+      </div>
+
+      <div id="navbar-suite">
+        <ul>        
+          <li id="navbar-menu" class="opennav hide-medium hide-large navbar-hover">
+            <a><i class="fa fa-bars"></i></a>
+          </li>         
           <li class="navbar-login">
-			<img src="./images/login.svg"></img>
-		  </li>         
+            <a><img src="./images/login.svg" /></a>
+          </li>  
+          <li id="navbar-cart">
+            <a><i class="fa fa-shopping-cart "></i></a>
+          </li>         
         </ul>
       </div>
+
     </div>
      
-  </nav>  
+  </nav> 
 
-  <nav id="navbar-droped" class="hide nav-top" >   <!-- hide-large hide-medium -->
-    
-	<ul class="navbar-rolled">
-      <li><a class="navbar-hover navLogin" >LOGIN</a></li>
-	  <li><a class="navbar-hover navAddHome" >ADICIONAR HOMESCREEN</a></li>
-	  <li><a class=" navProducts" >PRODUTOS:</a></li>
-      <li><a class="navbar-hover navProduct back-red" >TODOS</a></li>
-      <li><a class="navbar-hover navProduct back-red" >CARNES</a></li>
-      <li><a class="navbar-hover navProduct back-red" >PESCADOS</a></li>                  
-    </ul>
-	
-  </nav>  
+  <nav id="navbar-droped" class="w3-animate-bottom hide" ><!-- hide-large hide-medium -->	
+      
+		<ul class="navbar-rolled ">
+			<li><a class="navbar-hover butClose" ></a></li>
+			<li><a class="navbar-hover navLogin item-inner" >LOGIN</a></li>
+			<li><a class="navbar-hover navCart item-inner" >MEU CARRINHO</a></li>
+			<li id="navProducts"><a class="navProducts item-inner" >PRODUTOS:</a></li>
+                <ul>
+                    <li><a class="navbar-hover navProduct back-red " >TODOS</a></li>
+                    <!--li><a class="navbar-hover navProduct back-red" >CARNES</a></li>
+                    <li><a class="navbar-hover navProduct back-red" >PESCADOS</a></li-->				
+                </ul>			
+			<li class="navbar-hover navMidia item-inner"><a>BRASA MIDIAS</a></li>
+		</ul>
+      
+  </nav>	  
 
 </header> 
-
+    
 <main>	
 	
-	<section class="cards sessionTemplate" hidden>
-      <div id="">
+	<!-- ini templates -->
+    <section class="product-session sessionTemplate" hidden>
+      
 		<header>                  
           <span></span>
-          <a href="#" class="btn-plus ">ver todos</a>          
+          <a href="#" class="btn-see ">ver todos</a>          
         </header>
-		<div class="flexwrap">
+		<section class="flexwrap">
 			<div class="cards-container">
 			</div>
+        </section>
+      
+    </section>	
+	
+    <div class="item-container itemTemplate " hidden>
+
+	   <div class="item" data-product-key="" data-item-key="">    
+
+            <div class="item-inner">
+                <div class="item-top">                      
+                    <!--div class="item-top-image"-->
+                        <img class="item-image" src=""/>
+                    <!--/div-->			  	
+                    <p class="item-label"></p>
+                    <p class="item-desc"></p>			  	
+                </div>
+                <div class="item-bottom" >
+                    <div class="item-bottom-l">
+                        <div class="price"></div>
+                    </div>
+                    <div class="item-bottom-r">
+                        <button class="cart fa fa-shopping-cart ">                        
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div> 
+        
+	</div>	
+    
+    <!-- item clicked --> 
+    <div class="item-container itemClickedTemplate w3-animate-bottom" hidden>
+        
+        <div class="item" data-product-key="" data-item-key="">
+
+            <div class="navClose" >
+                <a class="butClose"></a>
+            </div>
+
+            <div class="item-inner">
+                <div class="item-top">                
+                    <img class="item-image" src=""/>                
+                    <p class="item-label"></p>
+                    <p class="item-desc"></p>			  	
+                </div>
+                <div class="item-bottom" >
+                    <div class="item-bottom-l">
+                        <div class="price"></div>
+                    </div>
+                    <div class="item-bottom-r">
+                        <button class="cart fa fa-shopping-cart ">                        
+                        </button>
+                    </div>
+                </div>
+            </div>
+
         </div>
-      </div>
-    </section>
-	
-	<div class="item-container itemTemplate" hidden>
-		<div class="item" id="">
-		  <div class="item-inner">
-			<div class="item-top">                      
-			  <div class="item-top-image">
-				<img src=""></img>
-			  </div>
-			  <div class="item-top-info">
-				<p class="rotulo"></p>
-				<p class="descricao"></p>
-			  </div> 
-			</div>
-			<div class="item-bottom" >                      
-			  <div class="item-bottom-l">
-				<div class="price"></div>
-			  </div>
-			  <div class="item-bottom-r">
-				<div class="cart ">
-				  <i class="fa fa-shopping-cart "></i>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		</div>   
-	</div>
-	
-	<section id="home-container" class="home-ini">
-		<img></img> 
-		<p ></p>
-	</section>  
-	
-	<section class="cards " id="carousel">
-	  <div >
-		<header >                  
+        
+    </div>    
+    
+    <!-- end templates -->
+    
+    <section id="home-container" class="home-ini">
+		<img src="./images/logo-neg.png" />
+		<p >Mandando Brasa OnLine</p>
+	</section>
+
+	<section id="carousel" class="product-session ">
+	  <div>
+		<header>                  
 		  <span></span>        
 		</header>
 		<div id="scrolling" class="flexwrap ">          
@@ -133,18 +182,63 @@
 	  </div>	  
 	</section>
 	
-	<section id="products-container"></section>
+	<section id="products-container" data-item-selected="">	<!-- TODO voltar daqui -->	
+	</section>
 
-  </main>
+	<section id="session-modal" class=" hide">       
 
-  <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+        <section id="cart-board" class=" w3-animate-left border-modal hide">
+
+            <nav class="navClose">
+				<a class="butClose"></a>
+			</nav>   
+
+            <h1 style="color: white;">
+            	<i class="fa fa-shopping-cart " style="color:black"></i>				
+				Meu Carrinho
+			</h1>				
+
+			<section id="rounded-container">		
+
+				<table>
+				  <tr>                    
+				    <th>PRODUTO</th>
+				    <th colspan="3">QTDE</th>
+				    <th>PREÇO</th>		    
+				  </tr>		  
+				</table>
+
+			</section>              
+
+			<section class="cart-board-footer">
+
+	        	<ul>			  
+				    <li>0</li>				  
+				    <li>TOTAL</li>  
+				</ul>
+
+				<div >
+					<button>CONCLUIR</button> 
+				</div>
+
+            </section>
+	
+        </section>
+    
+    </section>
+		
+</main>
+
+</section>
+    
+  <!--footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
     <div class="w3-row">
       <div class="w3-third"> 
       <p>SIGA</p>  
         <a href="#" class="w3-hover-text-indigo"><i class="fa fa-facebook-official"></i></a>
         <a href="#" class="w3-hover-text-pink"><i class="fa fa-instagram"></i></a>
         <!--p class="w3-medium">Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p-->
-      </div>
+      <!--/div>
       <div class="w3-third"> 
       <p>CONTATO</p>  
         <p class="w3-medium">(11) 9999-9999</p>
@@ -156,8 +250,10 @@
          <div class="w3-medium"><button class="w3-btn w3-section ">ENVIAR</button></div>         
       </div>
     </div>
-  </footer>
-</div>
+  </footer-->
+
+
+
 <script src="./scripts/app.js"></script>
 <script id="__bs_script__">//<![CDATA[
     document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.18.11'><\/script>".replace("HOST", location.hostname));

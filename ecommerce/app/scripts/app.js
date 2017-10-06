@@ -1,26 +1,37 @@
-
-(function() {
-  'use strict';  
+(function () {
+    'use strict';  
   
-  var app = {
-    isLoading: false,	    
-    products:["TODOS","CARNES","PESCADOS",""] ,
-	selectedProduct: document.getElementById('product-selected'),	
-	selectedNavbarButton: 0, //0: none, 1:products, 2:menu
-	navbar: document.getElementById('navbar'),
-	navbarProducts: document.getElementById('navbar-products'),	
-	navbarLogin: document.getElementById('navbar-login'),	
-	navbarMenu: document.getElementById('navbar-menu'),	
-    navbarDroped: document.getElementById('navbar-droped'),	
-	navbarDropedItens: document.querySelectorAll('#navbar-droped ul li a'),     
-	sessionTemplate:document.querySelector('.sessionTemplate'),	
-	itemTemplate:document.querySelector('.itemTemplate'),
-	productsContainer:document.getElementById('products-container'),
-	arrowLeft:document.querySelector('.arrow-l'),
-	arrowRight:document.querySelector('.arrow-r'),
-    spinner: document.querySelector('.loader')    
-  };  
-	
+    var app = {
+        isLoading: false,	    
+        products:["TODOS","CARNES","PESCADOS","ACESSÓRIOS"] , //load dynamic
+        selectedProduct: document.getElementById('product-selected'),	
+        selectedNavbarButton: 0, //0: none, 1:products, 2:menu
+        //templates
+        sessionTemplate:document.querySelector('.sessionTemplate'),	
+        itemTemplate:document.querySelector('.itemTemplate'),
+        //navbar
+        navbar: document.getElementById('navbar'),
+        navbarProducts: document.getElementById('navbar-products'),	
+        navbarCart: document.getElementById('navbar-cart'),
+        navbarLogin: document.getElementById('navbar-login'),
+        navbarMenu: document.getElementById('navbar-menu'),			
+        //navbar with all items
+        navbarAll: document.getElementById('navbar-droped'),	
+        navbarAllList: document.querySelectorAll('#navbar-droped ul li a'),     
+        //containers		
+        productsContainer:document.getElementById('products-container'),
+        modalContainer:document.getElementById('session-modal'),	
+        //boards
+        cartBoard: document.getElementById('cart-board'),
+        //componentes
+        butClose: document.querySelectorAll('.butClose'),
+        //componente itemslide
+        arrowLeft:document.querySelector('.arrow-l'),
+        arrowRight:document.querySelector('.arrow-r'),		
+        //loader
+        spinner: document.querySelector('.loader')            
+      }; 
+  	
   //json default for first load   
    var firstData = {
     secoes:[
@@ -50,7 +61,7 @@
 				pic:'camisa.png'			
 			},
 			{
-				key: 5,
+				key: 11,
 				label: 'Bebidas',
 				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
 				price:125.00,
@@ -76,47 +87,47 @@
 		label:'carnes',	
 		produtos:[		
 			{
-				key: 1,
-				label: 'Saca Rolha',
+				key: 20,
+				label: 'Picanha',
 				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
 				price:25.00,
-				pic:'saca-rolha.png'			
+				pic:'carne.png'			
 			},
 			{
-				key: 1,
-				label: 'Saca Rolha',
+				key: 21,
+				label: 'Picanha',
 				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
 				price:25.00,
-				pic:'saca-rolha.png'			
+				pic:'carne.png'			
 			},
 			{
-				key: 1,
-				label: 'Saca Rolha',
+				key: 22,
+				label: 'Picanha',
 				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
 				price:25.00,
-				pic:'saca-rolha.png'		
+				pic:'carne.png'		
 			},
 			{
-				key: 1,
-				label: 'Saca Rolha',
+				key: 23,
+				label: 'Picanha',
 				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
 				price:25.00,
-				pic:'saca-rolha.png'			
+				pic:'carne.png'			
 			},
 			{
-				key: 1,
-				label: 'Saca Rolha',
+				key: 24,
+				label: 'Picanha',
 				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
 				price:25.00,
-				pic:'saca-rolha.png'			
+				pic:'carne.png'			
 			}
 			,
 			{
-				key: 1,
-				label: 'Saca Rolha',
+				key: 25,
+				label: 'Picanha',
 				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
 				price:25.00,
-				pic:'saca-rolha.png'			
+				pic:'carne.png'			
 			}
 		]},	
 		{
@@ -124,47 +135,95 @@
 		label:'pescados',	
 		produtos:[
 			{
-				key: 5,
-				label: 'Bebidas',
+				key: 31,
+				label: 'Peixada',
 				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
 				price:125.00,
-				pic:'bebidas.png'			
+				pic:'peixe.png'			
 			},
 			{
-				key: 5,
-				label: 'Bebidas',
+				key: 32,
+				label: 'Peixada',
 				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
 				price:125.00,
-				pic:'bebidas.png'			
+				pic:'peixe.png'			
 			},
 			{
-				key: 5,
-				label: 'Bebidas',
+				key: 33,
+				label: 'Peixada',
 				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
 				price:125.00,
-				pic:'bebidas.png'			
+				pic:'peixe.png'			
 			},
 			{
-				key: 5,
-				label: 'Bebidas',
+				key: 34,
+				label: 'Peixada',
 				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
 				price:125.00,
-				pic:'bebidas.png'			
+				pic:'peixe.png'			
 			},
 			{
-				key: 5,
-				label: 'Bebidas',
+				key: 35,
+				label: 'Peixada',
 				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
 				price:125.00,
-				pic:'bebidas.png'			
+				pic:'peixe.png'			
 			}
 			,
 			{
-				key: 5,
-				label: 'Bebidas',
+				key: 36,
+				label: 'Peixada',
 				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
 				price:125.00,
-				pic:'bebidas.png'			
+				pic:'peixe.png'			
+			}
+		]},
+		{
+		key:3,	
+		label:'acessórios',	
+		produtos:[
+			{
+				key: 37,
+				label: 'Saca Rolha',
+				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
+				price:25.50,
+				pic:'saca-rolha.png'				
+			},
+			{
+				key: 38,
+				label: 'Camisa',
+				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
+				price:25.00,
+				pic:'camisa.png'
+			},
+			{
+				key: 39,
+				label: 'Saca Rolha',
+				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
+				price:25.50,
+				pic:'saca-rolha.png'				
+			},
+			{
+				key: 40,
+				label: 'Camisa',
+				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
+				price:25.00,
+				pic:'camisa.png'	
+			},
+			{
+				key: 41,
+				label: 'Saca Rolha',
+				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
+				price:25.50,
+				pic:'saca-rolha.png'		
+			}
+			,
+			{
+				key: 42,
+				label: 'Camisa',
+				description:'Camiseta branca de algodão Brasa Fã tamanhos P,M,G e como fica se escrever muita coisa?',
+				price:25.00,
+				pic:'camisa.png'		
 			}
 		]}
 	]};
@@ -176,153 +235,372 @@
    ****************************************************************************/
     
   window.onscroll = function(){      
-	  var navbarLogo = document.querySelector("#navbar-logo ul li a");
+	  var navbarLogo = document.querySelector("#navbar-logo a");
 	  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {        	  
-		  app.navbar.className = app.navbar.className.replace(" navbar-top", " navbar-rolled w3-animate-top");
+		  app.navbar.className = app.navbar.className.replace("navbar-top", " navbar-rolled w3-animate-top"); //TODO w3
 		  navbarLogo.classList.remove("hide");
 	  } else {
-		  app.navbar.className = app.navbar.className.replace(" navbar-rolled w3-animate-top", " navbar-top");
+		  app.navbar.className = app.navbar.className.replace("navbar-rolled w3-animate-top", " navbar-top");  //TODO w3
 		  navbarLogo.classList.add("hide");
 	  }	  	  
 	}
 
-  app.navbarProducts.addEventListener('click', function() {
-	
-	//console.log(app.selectedNavbarButton);
-	if(app.selectedNavbarButton ==0 || app.selectedNavbarButton==1){
-		if (!app.navbarDroped.classList.contains("show")) {          
-			app.navbarDroped.classList.add("show");
-			app.navbarProducts.classList.add("back-gray");
-			app.setOnlyProducts(true);		
-			app.selectedNavbarButton=1;		
-		}
-		else {           
-			app.navbarDroped.classList.remove("show");   
-			app.navbarProducts.classList.remove("back-gray");
+  app.navbarMenu.addEventListener('click', function() {	
+		if(app.selectedNavbarButton ==0 || app.selectedNavbarButton==2){
 			app.setOnlyProducts(false);
-			app.selectedNavbarButton=0;		
+			if (!app.navbarAll.classList.contains('hide')) {          
+				app.modalContainer.classList.add('hide');
+				app.navbarAll.classList.add('hide');
+				app.selectedNavbarButton=0;	
+			}
+			else {           
+				app.modalContainer.classList.remove('hide');
+				app.navbarAll.classList.remove('hide');   
+				app.selectedNavbarButton=2;	
+			}
+			app.rotateHambuguer();
 		}
-		app.rotateArrow();	
-	}
+  });
+      
+  app.navbarProducts.addEventListener('click', function() {	
+		if(app.selectedNavbarButton ==0 || app.selectedNavbarButton==1){
+			if (!app.navbarAll.classList.contains("hide")) {          
+				app.modalContainer.classList.add("hide");
+				//app.navbarProducts.classList.remove("back-gray");
+				app.navbarAll.classList.add("hide");
+				app.setOnlyProducts(false);
+				app.selectedNavbarButton=0;		
+			}
+			else {           
+				app.modalContainer.classList.remove("hide");   
+				app.navbarAll.classList.remove("hide");   
+				//app.navbarProducts.classList.add("back-gray");
+				app.setOnlyProducts(true);		
+				app.selectedNavbarButton=1;		
+			}
+			app.rotateArrow();	
+		}			
   });
   
-  app.navbarMenu.addEventListener('click', function() {
-	//console.log(app.selectedNavbarButton);
-	if(app.selectedNavbarButton ==0 || app.selectedNavbarButton==2){
-		app.setOnlyProducts(false);
-		if (!app.navbarDroped.classList.contains("show")) {          
-			app.navbarDroped.classList.add("show");
-			app.selectedNavbarButton=2;	
-		}
-		else {           
-			app.navbarDroped.classList.remove("show");   
-			app.selectedNavbarButton=0;	
-		}
-		app.rotateHambuguer();
-	}
+  app.navbarCart.addEventListener('click', function() {	
+  	app.shownavbarCart(null, null, null);  	
   });
 
-  app.loadProducts=function(data){	  
-	
-	let foundSugestoes = false; 	
-	let carouselSection = document.getElementById('carousel');			
-	let carouselUl;
-	
-	for (let s=0; s<data.secoes.length; s++){
+  app.addProductsList = function(){
+      
+      var navProductsUl = app.navbarAll.querySelector('#navProducts');
+      
+      for(let p=1; p < app.products.length; p++){        
+        
+        var navProductLi = document.createElement('li');
+        var navProductA = document.createElement('a');
+        navProductA.textContent = app.products[p].toUpperCase();
+        navProductA.classList.add('navbar-hover');
+        navProductA.classList.add('navProduct');
+        navProductA.classList.add('back-red');
+        navProductLi.appendChild(navProductA);
+
+        navProductA.addEventListener('click', function() {
+           
+            console.log('TODO ajax request');            
+            app.selectedProduct.innerHTML = this.innerHTML;				
+        });
+
+        navProductsUl.appendChild(navProductLi);        
+        app.selectedProduct.textContent = app.products[0];          
+            
+      }      
+  }
+    
+  app.loadProducts=function(data){	  	
+    
+    var foundSugestoes = false; 	
+    var carouselSection = document.getElementById('carousel');			
+    var carouselUl;
+    
+    for (let s=0; s <data.secoes.length; s++){
+
+        var sessionTemplate = app.sessionTemplate.cloneNode(true);
+        var cardsContainer = sessionTemplate.querySelector('.cards-container');		
+        var secao = data.secoes[s];
+        sessionTemplate.classList.remove('sessionTemplate');	
+
+        //se contém carrossel com sugestões
+        if(secao.key == 0){
+            foundSugestoes = true;
+            carouselUl = carouselSection.querySelector('ul');
+            carouselSection.querySelector('header span').textContent = secao.label.toUpperCase();	           
+        }
+        else{
+            sessionTemplate.querySelector('header span').textContent = secao.label.toUpperCase();			
+            app.productsContainer.appendChild(sessionTemplate);  
+            sessionTemplate.removeAttribute('hidden');
+        }        
+        
+        for (let p=0; p<secao.produtos.length; p++){
+
+            var produto = secao.produtos[p];
+            var card = app.itemTemplate.cloneNode(true);
+
+            //para o card do carousel
+            if(secao.key == 0) card.classList.add('width-max');
+            else card.classList.remove('itemTemplate');			
+
+            //monta o card           
+            card.removeAttribute('hidden');
+            card.classList.remove('itemTemplate');
+            card.querySelector('.item-image').src ='./images/' + produto.pic;
+            card.querySelector('.item-label').textContent = produto.label;
+            card.querySelector('.item-desc').textContent = produto.description;
+            card.querySelector('.price').textContent = formatMoney(produto.price);
+            
+            card.addEventListener('click', function(e) {                
+               
+                let cardModal =  document.querySelector('.itemClickedTemplate');	
+                cardModal.removeAttribute('hidden');
+                
+                var caller = e.target || e.srcElement;	
+                console.log(caller);
+                
+                if(!caller.classList.contains('cart')){
+                    console.log('nao he botao');
+                }
+                /*
+                cardModal.querySelector('.item-image').src ='./images/' + caller.querySelector('.item-image').src;
+                cardModal.querySelector('.item-label').textContent = caller.querySelector('.item-label').textContent;
+                cardModal.querySelector('.item-desc').textContent = card.querySelector('.item-desc').textContent;
+                cardModal.querySelector('.price').textContent = card.querySelector('.price').textContent;
+                
+                cardModal.classList.add('width-heigth-max');
+                cardModal.classList.add('padding-modal');
+
+                let navClose = cardModal.querySelector('.navClose');
+                navClose.removeAttribute('hidden');
+                let butClose = navClose.querySelector('.butClose');
+
+                butClose.addEventListener('click', function() {                 
+                    cardModal = null;
+                    app.hideModal();
+                });				
+
+                app.modalContainer.classList.remove('hide');
+                app.modalContainer.appendChild(cardModal);
+                */
+
+            });	
+            
+            var cart = card.querySelector('.cart');
+            cart.dataset.key = produto.key;	
+            cart.dataset.price = produto.price;	
+            cart.dataset.label = produto.label;	
+            
+            cart.addEventListener('click', function(e) {				
+                var caller = e.target || e.srcElement;								
+                app.shownavbarCart(caller.dataset.key , caller.dataset.label, caller.dataset.price);
+
+            });
+            
+            if(secao.key ==0){
+                let cardLi = document.createElement("li");				
+                cardLi.appendChild(card); 				
+                carouselUl.appendChild(cardLi);						
+            }
+            else{
+                cardsContainer.appendChild(card);					
+            }
+        }
+    }
+    if(!foundSugestoes){
+        carouselSection.style.display = "none";			
+    }
 		
-		let sessionTemplate = app.sessionTemplate.cloneNode(true);
-		let cardsContainer = sessionTemplate.querySelector('.cards-container');			;	
-		let secao = data.secoes[s];
-		
-		//se contém sugestões
-		if(secao.key ==0){
-			foundSugestoes = true;
-			carouselUl = carouselSection.querySelector('ul');
-			carouselSection.querySelector('header span').textContent = secao.label.toUpperCase();	
-		}
-		else{
-			sessionTemplate.querySelector('header span').textContent = secao.label.toUpperCase();			
-			app.productsContainer.appendChild(sessionTemplate);  
-			sessionTemplate.removeAttribute('hidden');		
-		}
-		for (let p=0; p<secao.produtos.length; p++){
-			
-			let produto = secao.produtos[p];
-			let card = app.itemTemplate.cloneNode(true);
-			if(secao.key ==0) card.classList.add('width-max');
-			else card.classList.remove('itemTemplate');
-			card.removeAttribute('hidden');
-			card.classList.remove('itemTemplate');
-			card.querySelector('.item-top-image img').src ='./images/' + produto.pic;
-			card.querySelector('.rotulo').textContent = produto.label;
-			card.querySelector('.descricao').textContent = produto.description;
-			card.querySelector('.price').textContent = formatMoney(produto.price);				
-			if(secao.key ==0){
-				let cardLi = document.createElement("li");				
-				cardLi.appendChild(card); 				
-				carouselUl.appendChild(cardLi);						
-			}
-			else{
-				cardsContainer.appendChild(card);					
-			}
-		}
-	}
-	if(!foundSugestoes){
-		carouselSection.style.display = "none";			
-	}
+  }
+
+  app.hideModal=function(){  	
+	
+	app.navbarAll.classList.add('hide');
+	app.modalContainer.classList.add('hide');
+	app.cartBoard.classList.add('hide');  			
 	
   }  
-  
-  app.setOnlyProducts=function(show){	   
-	if(show){
-		app.navbarDroped.querySelector(".navLogin").classList.add("hide");
-		app.navbarDroped.querySelector(".navAddHome").classList.add("hide");	
-		app.navbarDroped.querySelector(".navProducts").classList.add("hide");	
+
+  app.shownavbarCart = function(productKey, productLabel, productPrice){  	  	
+
+  	if(app.modalContainer.classList.contains('hide')){
+		
+		app.cartBoard.classList.remove('hide');
+		app.modalContainer.classList.remove('hide');		
+
+		if(productLabel !=null && productPrice!=null){
+			
+			var table = app.modalContainer.querySelector('#rounded-container table');
+			
+			/* check if already exists product */			
+			
+			let found=false;
+			for(let i=1; i<table.rows.length-1; i++){
+
+				let trow = table.rows[i];
+				//console.log(trow.dataset.key + ' e ' + productKey);
+				
+				if(trow.dataset.key!=undefined && productKey!=undefined
+				   && trow.dataset.key == productKey){					
+					
+					let qtdeInt = parseInt(trow.cells[1].innerHTML);
+					qtdeInt++;										
+					trow.cells[1].innerHTML = qtdeInt.toString();
+					found = true;
+					break;
+
+				}
+			}	
+
+			if(!found){
+				
+				var row = table.insertRow(1);
+				var cellLabel = row.insertCell(0);
+				var cellQtde = row.insertCell(1);
+				var cellPlus = row.insertCell(2);					
+				var cellMinus = row.insertCell(3);
+				var cellPrice = row.insertCell(4);
+
+				row.dataset.key = productKey;
+
+				cellLabel.innerHTML = productLabel;
+				cellQtde.innerHTML ='1';
+				cellPrice.innerHTML = formatMoney(productPrice);
+
+				var elPlus  = document.createElement('button');
+				elPlus.classList.add('btn-plus');							
+				elPlus.innerHTML='+';
+
+				elPlus.addEventListener('click', function() {					
+					
+                    row.classList.remove('not-selected');
+                    var qtdeInt = parseInt(cellQtde.innerHTML);
+					qtdeInt++;		
+                                        
+					cellQtde.innerHTML = qtdeInt.toString(); 
+
+					var precoTotal = document.querySelector('.cart-board-footer li:nth-child(1)');
+					var vrTotal	= parseFloat(precoTotal.innerHTML);
+					precoTotal.innerHTML = 
+						formatMoney(vrTotal + parseFloat(cellPrice.innerHTML));
+
+				});
+
+				cellPlus.appendChild(elPlus);
+
+				var elMinus  = document.createElement('button');
+				elMinus.classList.add('btn-minus');				
+				elMinus.innerHTML='-';	
+
+				elMinus.addEventListener('click', function() {
+				
+                    var qtdeInt = parseInt(cellQtde.innerHTML);
+					qtdeInt--;					
+                    
+					if(qtdeInt > -1){
+						cellQtde.innerHTML = qtdeInt.toString();
+
+						var precoTotal = document.querySelector('.cart-board-footer li:nth-child(1)');
+						var vrTotal	= parseFloat(precoTotal.innerHTML);
+						precoTotal.innerHTML = 
+						formatMoney(vrTotal - parseFloat(cellPrice.innerHTML)); 						                        
+                        if(qtdeInt == 0) row.classList.add('not-selected');
+					}
+                    
+
+				});
+
+				cellMinus.appendChild(elMinus);
+				
+			}
+
+			var total = document.querySelector('.cart-board-footer li:nth-child(1)');
+			var vrTotal	= parseFloat(total.innerHTML);			
+			total.innerHTML = formatMoney(vrTotal + parseFloat(productPrice));
+
+		}
 	}
-	else{
-		app.navbarDroped.querySelector(".navLogin").classList.remove("hide");
-		app.navbarDroped.querySelector(".navAddHome").classList.remove("hide");		
-		app.navbarDroped.querySelector(".navProducts").classList.remove("hide");
+	else{		
+		app.cartBoard.classList.add('hide');	
+		app.modalContainer.classList.add('hide');
 	}	
+  }
+
+  app.setOnlyProducts=function(show){	   
+		if(show){
+			app.navbarAll.querySelector(".navLogin").classList.add("hide");
+			app.navbarAll.querySelector(".navCart").classList.add("hide");	
+			app.navbarAll.querySelector(".navProducts").classList.add("hide");	
+            app.navbarAll.querySelector(".navMidia").classList.add("hide");	            
+		}
+		else{
+			app.navbarAll.querySelector(".navLogin").classList.remove("hide");
+			app.navbarAll.querySelector(".navCart").classList.remove("hide");		
+			app.navbarAll.querySelector(".navProducts").classList.remove("hide");
+            app.navbarAll.querySelector(".navMidia").classList.remove("hide");            
+		}	
   }
   
   app.rotateHambuguer=function(){
-	var x = document.getElementsByClassName("opennav")[0];
-    if (x.className.indexOf("gira") == -1) x.className+=" gira";      
-    else  x.className = x.className.replace(" gira", "");  
-  }
-	
+		var x = document.getElementsByClassName("opennav")[0];
+			if (x.className.indexOf("gira") == -1) x.className+=" gira";      
+			else  x.className = x.className.replace(" gira", "");  
+		}
+		
   app.rotateArrow = function(){
-	var arrowNav = document.getElementById('arrow-nav');	
-	if(arrowNav.classList.contains('arrow-down')) {
-		arrowNav.classList.remove('arrow-down');
-		arrowNav.classList.add('arrow-up');
-	}
-	else{
-		arrowNav.classList.add('arrow-down');
-		arrowNav.classList.remove('arrow-up');		
-	}
+    var arrowNav = document.getElementById('arrow-nav');	
+    if(arrowNav.classList.contains('arrow-down')) {
+        arrowNav.classList.remove('arrow-down');
+        arrowNav.classList.add('arrow-up');
+    }
+    else{
+        arrowNav.classList.add('arrow-down');
+        arrowNav.classList.remove('arrow-up');		
+    }
   }
   
   //items nav droped listeners 
-  for (var i=0; i<app.navbarDropedItens.length;i++){
-	  app.navbarDropedItens[i].addEventListener('click', function() {
-			if(!this.classList.contains('navProducts')){
-				//products
-				if(this.classList.contains('navProduct')){
-					app.selectedProduct.innerHTML = this.innerHTML;				
-				}
-				app.navbarDroped.classList.remove("show");
-				if(app.selectedNavbarButton ==2) app.rotateHambuguer();
-				if(app.selectedNavbarButton ==1) app.navbarProducts.classList.remove("back-red");
-				app.selectedNavbarButton =0;
-			}
+  for (var i=0; i<app.navbarAllList.length; i++){
+
+	  app.navbarAllList[i].addEventListener('click', function() {
+        if(!this.classList.contains('navProducts')){           
+
+            app.navbarAll.classList.add('hide');
+            if(app.selectedNavbarButton ==2) app.rotateHambuguer();
+            if(app.selectedNavbarButton ==1) app.navbarProducts.classList.remove("back-red");
+            app.selectedNavbarButton =0;    
+            app.hideModal();
+            
+            if (this.classList.contains('navCart')){   
+                app.shownavbarCart(null, null, null);                  
+            };
+        }
 	  });
+  }    
+  
+  //all butClose listeners
+  for (let i=0; i< app.butClose.length; i++){
+  	app.butClose[i].addEventListener('click', function() {
+		app.hideModal();
+  	});  
   }
+    
+  // init app
+  app.addProductsList();
+  app.loadProducts(firstData);  
+
   
-  
-  app.loadProducts(firstData);
-  
+  /*
+  /* you are perfect in all your ways to us
+  	let myNode = app.modalContainer;
+	while (myNode.firstChild) {
+	    myNode.removeChild(myNode.firstChild);
+	}
+  	myNode.setAttribute("type", "hidden");*/		
+
   /*****************************************************************************
    *
    * Methods to update/refresh the UI
